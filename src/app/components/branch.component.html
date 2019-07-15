@@ -1,0 +1,18 @@
+
+<div fxLayout="row" class="parent-container" [class.parent-container-first]="firstRow">
+<div class="line-box-left" *ngIf="!firstColumn" >
+<div class="top-left" *ngIf="!firstRow"></div>
+<div class="bottom-left"></div>
+</div>
+<div fxLayout="row" class="div-container" [class.div-container-first]="firstRow"> 
+<div class="div" fxLayout="row" fxLayoutAlign="space-between center" [class.div-first]="!first">
+  <p class="unit-name">
+    {{unit.name}}
+  </p>
+  <p class="plus" [class.minus]="expanded"(click)="expand()" *ngIf="unit.children.length > 0">
+    {{ expanded ? "-" : "+" }}
+  </p>
+</div>
+<div class="line-box-right" *ngIf="expanded"></div>
+</div>
+</div>

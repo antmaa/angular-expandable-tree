@@ -1,0 +1,42 @@
+<div>
+<div class="title-container"> AREA</div>
+<div class="title-container"> MASTER-UNIT </div>
+<div class="title-container">UNIT</div>
+<div class="title-container">SUB</div>
+</div>
+<div class="container" fxLayout="row">
+  <div class="area">
+  <branch 
+  *ngFor="let master of areaMock; let i = index" 
+  [unit]="master" 
+  [firstColumn]="true" 
+  [firstRow]="i === 0 ? true : false" 
+  [index]="i"
+  [expanded]="masterIndex != i ? false : true"
+  (giveChildren)="onGiveChildrenMaster($event)"
+  (giveIndex)="onGiveIndexMaster($event)"> 
+  </branch>
+  </div>
+  <div class="master-unit" [style.padding-top]="masterIndex * 49 + 23 + 'px'">
+    <branch 
+    *ngFor="let master of masterUnits; let i = index" 
+    [unit]="master" 
+    [firstColumn]="false" 
+    [firstRow]="i === 0 ? true : false" 
+    [index]="i"
+    [expanded]="unitIndex != i ? false : true"
+    (giveChildren)="onGiveChildrenUnits($event)"
+    (giveIndex)="onGiveIndexUnits($event)"> 
+    </branch>
+  </div>
+  <div class="unit" [style.padding-top]="(unitIndex + masterIndex) * 49 + 46 + 'px'">
+    <branch 
+    *ngFor="let master of units; let i = index" 
+    [unit]="master" 
+    [firstColumn]="false" 
+    [firstRow]="i === 0 ? true : false" 
+    (giveChildren)="onGiveChildrenUnits($event)"> 
+    </branch>
+  </div>
+  <div class="sub-unit"></div>
+</div>
