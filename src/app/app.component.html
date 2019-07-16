@@ -35,8 +35,19 @@
     [unit]="master" 
     [firstColumn]="false" 
     [firstRow]="i === 0 ? true : false" 
-    (giveChildren)="onGiveChildrenUnits($event)"> 
+    [index]="i"
+    [expanded]="subUnitIndex != i ? false : true"
+    (giveChildren)="onGiveChildrenSubUnits($event)"
+    (giveIndex)="onGiveIndexSubUnits($event)"> 
     </branch>
   </div>
-  <div class="sub-unit"></div>
+  <div class="sub-unit" [style.padding-top]="(unitIndex + masterIndex + subUnitIndex) * 49 + 70 + 'px'">
+    <branch 
+    *ngFor="let master of subUnits; let i = index" 
+    [unit]="master" 
+    [firstColumn]="false" 
+    [firstRow]="i === 0 ? true : false" 
+    [index]="i"> 
+    </branch>
+  </div>
 </div>
